@@ -11,8 +11,8 @@ class LemlistSDK {
   }) : _dio = Dio(
           BaseOptions(
             baseUrl: 'https://api.lemlist.com',
-            headers: {
-              'Authorization': base64Encode(utf8.encode(':$apiKey')),
+            queryParameters: {
+              'access_token': apiKey,
             },
           ),
         );

@@ -2,3 +2,4 @@
 library;
 
 export 'src/lemlist_sdk.dart';
+export 'src/models/models.dart';

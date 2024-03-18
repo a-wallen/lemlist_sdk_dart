@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-LeadRequest _$LeadRequestFromJson(Map<String, dynamic> json) {
-  return _LeadRequest.fromJson(json);
-}
-
 /// @nodoc
 mixin _$LeadRequest {
   String? get firstName => throw _privateConstructorUsedError;
@@ -27,8 +23,9 @@ mixin _$LeadRequest {
   String? get phone => throw _privateConstructorUsedError;
   String? get picture => throw _privateConstructorUsedError;
   String? get linkedinUrl => throw _privateConstructorUsedError;
+  String? get website => throw _privateConstructorUsedError;
+  Map<String, dynamic> get customFields => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LeadRequestCopyWith<LeadRequest> get copyWith =>
       throw _privateConstructorUsedError;
@@ -47,7 +44,9 @@ abstract class $LeadRequestCopyWith<$Res> {
       String? icebreaker,
       String? phone,
       String? picture,
-      String? linkedinUrl});
+      String? linkedinUrl,
+      String? website,
+      Map<String, dynamic> customFields});
 }
 
 /// @nodoc
@@ -70,6 +69,8 @@ class _$LeadRequestCopyWithImpl<$Res, $Val extends LeadRequest>
     Object? phone = freezed,
     Object? picture = freezed,
     Object? linkedinUrl = freezed,
+    Object? website = freezed,
+    Object? customFields = null,
   }) {
     return _then(_value.copyWith(
       firstName: freezed == firstName
@@ -100,6 +101,14 @@ class _$LeadRequestCopyWithImpl<$Res, $Val extends LeadRequest>
           ? _value.linkedinUrl
           : linkedinUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      website: freezed == website
+          ? _value.website
+          : website // ignore: cast_nullable_to_non_nullable
+              as String?,
+      customFields: null == customFields
+          ? _value.customFields
+          : customFields // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
     ) as $Val);
   }
 }
@@ -119,7 +128,9 @@ abstract class _$$LeadRequestImplCopyWith<$Res>
       String? icebreaker,
       String? phone,
       String? picture,
-      String? linkedinUrl});
+      String? linkedinUrl,
+      String? website,
+      Map<String, dynamic> customFields});
 }
 
 /// @nodoc
@@ -140,6 +151,8 @@ class __$$LeadRequestImplCopyWithImpl<$Res>
     Object? phone = freezed,
     Object? picture = freezed,
     Object? linkedinUrl = freezed,
+    Object? website = freezed,
+    Object? customFields = null,
   }) {
     return _then(_$LeadRequestImpl(
       firstName: freezed == firstName
@@ -170,13 +183,21 @@ class __$$LeadRequestImplCopyWithImpl<$Res>
           ? _value.linkedinUrl
           : linkedinUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      website: freezed == website
+          ? _value.website
+          : website // ignore: cast_nullable_to_non_nullable
+              as String?,
+      customFields: null == customFields
+          ? _value._customFields
+          : customFields // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$LeadRequestImpl implements _LeadRequest {
+
+class _$LeadRequestImpl extends _LeadRequest {
   const _$LeadRequestImpl(
       {this.firstName,
       this.lastName,
@@ -184,10 +205,11 @@ class _$LeadRequestImpl implements _LeadRequest {
       this.icebreaker,
       this.phone,
       this.picture,
-      this.linkedinUrl});
-
-  factory _$LeadRequestImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LeadRequestImplFromJson(json);
+      this.linkedinUrl,
+      this.website,
+      final Map<String, dynamic> customFields = const {}})
+      : _customFields = customFields,
+        super._();
 
   @override
   final String? firstName;
@@ -203,10 +225,20 @@ class _$LeadRequestImpl implements _LeadRequest {
   final String? picture;
   @override
   final String? linkedinUrl;
+  @override
+  final String? website;
+  final Map<String, dynamic> _customFields;
+  @override
+  @JsonKey()
+  Map<String, dynamic> get customFields {
+    if (_customFields is EqualUnmodifiableMapView) return _customFields;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_customFields);
+  }
 
   @override
   String toString() {
-    return 'LeadRequest(firstName: $firstName, lastName: $lastName, companyName: $companyName, icebreaker: $icebreaker, phone: $phone, picture: $picture, linkedinUrl: $linkedinUrl)';
+    return 'LeadRequest(firstName: $firstName, lastName: $lastName, companyName: $companyName, icebreaker: $icebreaker, phone: $phone, picture: $picture, linkedinUrl: $linkedinUrl, website: $website, customFields: $customFields)';
   }
 
   @override
@@ -225,29 +257,33 @@ class _$LeadRequestImpl implements _LeadRequest {
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.picture, picture) || other.picture == picture) &&
             (identical(other.linkedinUrl, linkedinUrl) ||
-                other.linkedinUrl == linkedinUrl));
+                other.linkedinUrl == linkedinUrl) &&
+            (identical(other.website, website) || other.website == website) &&
+            const DeepCollectionEquality()
+                .equals(other._customFields, _customFields));
   }
 
-  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, firstName, lastName, companyName,
-      icebreaker, phone, picture, linkedinUrl);
+  int get hashCode => Object.hash(
+      runtimeType,
+      firstName,
+      lastName,
+      companyName,
+      icebreaker,
+      phone,
+      picture,
+      linkedinUrl,
+      website,
+      const DeepCollectionEquality().hash(_customFields));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LeadRequestImplCopyWith<_$LeadRequestImpl> get copyWith =>
       __$$LeadRequestImplCopyWithImpl<_$LeadRequestImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$LeadRequestImplToJson(
-      this,
-    );
-  }
 }
 
-abstract class _LeadRequest implements LeadRequest {
+abstract class _LeadRequest extends LeadRequest {
   const factory _LeadRequest(
       {final String? firstName,
       final String? lastName,
@@ -255,10 +291,10 @@ abstract class _LeadRequest implements LeadRequest {
       final String? icebreaker,
       final String? phone,
       final String? picture,
-      final String? linkedinUrl}) = _$LeadRequestImpl;
-
-  factory _LeadRequest.fromJson(Map<String, dynamic> json) =
-      _$LeadRequestImpl.fromJson;
+      final String? linkedinUrl,
+      final String? website,
+      final Map<String, dynamic> customFields}) = _$LeadRequestImpl;
+  const _LeadRequest._() : super._();
 
   @override
   String? get firstName;
@@ -274,6 +310,10 @@ abstract class _LeadRequest implements LeadRequest {
   String? get picture;
   @override
   String? get linkedinUrl;
+  @override
+  String? get website;
+  @override
+  Map<String, dynamic> get customFields;
   @override
   @JsonKey(ignore: true)
   _$$LeadRequestImplCopyWith<_$LeadRequestImpl> get copyWith =>
